@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create Output Directory
-        run: mkdir -p output/kicad output/production
+        run: mkdir -p output/kicad output/production/jlcpcb
 
       - name: Panelization
         run: >
