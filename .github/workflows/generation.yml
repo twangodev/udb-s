@@ -16,7 +16,10 @@ jobs:
     services:
       kikit:
         image: yaqwsx/kikit
-        options: --name kikit-container -v ${{ github.workspace }}:/workspace
+        options: >
+          --name kikit-container 
+          -v ${{ github.workspace }}:/workspace
+          tail -f /dev/null
     steps:
       - name: Checkout
         uses: actions/checkout@v4
