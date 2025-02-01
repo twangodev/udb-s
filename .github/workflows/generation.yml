@@ -17,11 +17,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Docker Alias
+        run: >
+          alias 
+          kikit='docker run --rm -v ${{ github.workspace }}:/kikit yaqwsx/kikit'
+
       - name: Create Output Directory
         run: mkdir -p output
 
       - name: Panelize
         run: >
-          docker run --rm 
-          -v ${{ github.workspace }}:/kikit 
-          yaqwsx/kikit panelize -p panel.json udb-s.kicad_pcb output/panel.kicad_pcb
+          kikit panelize 
+          -p panel.json 
+          udb-s.kicad_pcb 
+          output/kicad/panel.kicad_pcb
+
+      - name: Create Production Files (JLCPCB)
+        run: >
+          kikit fab
+          jlcpcb 
+          --assembly
+          --schematic udb-s.kicad_sch
+          output/production/jlcpcb
+
+      - name: Upload Panel and Production Files
+        uses: actions/upload-artifact@v4
+        with:
+          path: output
