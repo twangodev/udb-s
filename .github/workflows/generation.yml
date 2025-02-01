@@ -20,13 +20,13 @@ jobs:
       - name: Create Output Directory
         run: mkdir -p output
 
-      - name: Panelize
+      - name: Panelization
         run: >
           docker run --rm -v ${{ github.workspace }}:/kikit yaqwsx/kikit
           panelize
           -p panel.json
           udb-s.kicad_pcb
-          output/kicad/panel.kicad_pcb
+          output/kicad
 
       - name: Create Production Files (JLCPCB)
         run: >
