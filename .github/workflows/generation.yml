@@ -35,6 +35,7 @@ jobs:
           jlcpcb 
           --assembly
           --schematic udb-s.kicad_sch
+          output/kicad/panelized.kicad_pcb
           output/production/jlcpcb
 
       - name: Upload Panel and Production Files
