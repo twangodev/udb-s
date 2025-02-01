@@ -1,0 +1,27 @@
+{
+  "layout": {
+    "hspace": "2mm",
+    "hboneskip": "3",
+    "rows": "8",
+    "cols": "2"
+  },
+  "cuts": {
+    "type": "vcuts"
+  },
+  "framing": {
+    "type": "railstb"
+  },
+  "tooling": {
+    "type": "4hole",
+    "hoffset": "10mm",
+    "voffset": "2.5mm"
+  },
+  "fiducials": {
+    "type": "4fid",
+    "hoffset": "15mm",
+    "voffset": "3.85mm"
+  },
+  "post": {
+    "millradius": "1mm"
+  }
+}
