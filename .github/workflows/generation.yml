@@ -17,11 +17,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - run:
-          echo ${{ github.workspace }} && pwd && ls -la ${{ github.workspace }}
+      - name: Create Output Directory
+        run: mkdir -p output
 
       - name: Panelize
         run: >
           docker run --rm 
           -v ${{ github.workspace }}:/kikit 
-          yaqwsx/kikit panelize --preset panel.json udb-s.kicad_pcb /workplace/panel.kicad_pcb
+          yaqwsx/kikit panelize -p panel.json udb-s.kicad_pcb output/panel.kicad_pcb
