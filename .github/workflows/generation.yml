@@ -13,10 +13,14 @@ on:
 jobs:
   panelize:
     runs-on: ubuntu-latest
+    services:
+      kikit:
+        image: yaqwsx/kikit
+        options: --name kikit-container -v ${{ github.workspace }}:/workspace
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Panelize
         run: |
-          docker run --rm -v $(pwd):/workspace yaqwsx/kikit panelize --help
+          docker exec kikit-container kikit --help
