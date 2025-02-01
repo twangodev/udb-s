@@ -18,5 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Panelize
-        run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace yaqwsx/kikit panelize --help
+        run: >
+          docker run --rm 
+          -v ${{ github.workspace }}:/workspace 
+          yaqwsx/kikit panelize --preset ./panel.json ./udb-s.kicad_pcb /workplace/panel.kicad_pcb
