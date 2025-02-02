@@ -21,8 +21,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create Output Directory
-        run: mkdir -p output/kicad/ output/production/jlcpcb/
+      - name: Create Output Directories
+        run: mkdir -p output/kicad/ output/production/jlcpcb/ output/production/pcbway/
 
       - name: Pull KiKit Docker Image
         run: docker pull yaqwsx/kikit
