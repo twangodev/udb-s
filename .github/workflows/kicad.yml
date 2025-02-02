@@ -41,7 +41,7 @@ jobs:
           --no-drc
           --assembly
           --schematic udb-s.kicad_sch
-          output/kicad/panelized.kicad_pcb
+          output/kicad/${{ matrix.panel_rows }}x${{ matrix.panel_cols }}/panelized.kicad_pcb
           output/production/jlcpcb/${{ matrix.panel_rows }}x${{ matrix.panel_cols }}/
 
       - name: Upload Panel and Production Files
