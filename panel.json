@@ -1,9 +1,7 @@
 {
   "layout": {
     "hspace": "2mm",
-    "hboneskip": "3",
-    "rows": "8",
-    "cols": "2"
+    "hboneskip": "3"
   },
   "cuts": {
     "type": "vcuts"
