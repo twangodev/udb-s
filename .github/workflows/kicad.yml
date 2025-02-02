@@ -12,21 +12,26 @@ on:
 
 jobs:
   panelize:
+    strategy:
+      matrix:
+        panel_rows: [2, 3]
+        panel_cols: [8, 10]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Create Output Directory
-        run: mkdir -p output/kicad output/production/jlcpcb
+        run: mkdir -p output/kicad/{{ matrix.panel_rows }}x{{ matrix.panel_cols }} output/production/jlcpcb/{{ matrix.panel_rows }}x{{ matrix.panel_cols }}
 
       - name: Panelization
         run: >
           docker run --rm -v ${{ github.workspace }}:/kikit yaqwsx/kikit
           panelize
-          -p panel.json
+          --preset panel.json
+          --layout "rows: {{ matrix.panel_rows }}; cols: {{ matrix.panel_cols }}"
           udb-s.kicad_pcb
-          output/kicad/panelized.kicad_pcb
+          output/kicad/{{ matrix.panel_rows }}x{{ matrix.panel_cols }}/panelized.kicad_pcb
 
       - name: Create Production Files (JLCPCB)
         run: >
@@ -37,7 +42,7 @@ jobs:
           --assembly
           --schematic udb-s.kicad_sch
           output/kicad/panelized.kicad_pcb
-          output/production/jlcpcb
+          output/production/jlcpcb/{{ matrix.panel_rows }}x{{ matrix.panel_cols }}/
 
       - name: Upload Panel and Production Files
         uses: actions/upload-artifact@v4
