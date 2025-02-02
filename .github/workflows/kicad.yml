@@ -24,6 +24,9 @@ jobs:
       - name: Create Output Directory
         run: mkdir -p output/kicad/ output/production/jlcpcb/
 
+      - name: Pull KiKit Docker Image
+        run: docker pull yaqwsx/kikit
+
       - name: Panelization
         run: >
           docker run --rm -v ${{ github.workspace }}:/kikit yaqwsx/kikit
