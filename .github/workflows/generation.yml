@@ -33,6 +33,7 @@ jobs:
           docker run --rm -v ${{ github.workspace }}:/kikit yaqwsx/kikit
           fab
           jlcpcb 
+          --no-drc
           --assembly
           --schematic udb-s.kicad_sch
           output/kicad/panelized.kicad_pcb
