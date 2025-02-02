@@ -47,4 +47,5 @@ jobs:
       - name: Upload Panel and Production Files
         uses: actions/upload-artifact@v4
         with:
+          name: panel-${{ matrix.panel_rows }}x${{ matrix.panel_cols }}
           path: output
