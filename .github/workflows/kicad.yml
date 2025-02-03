@@ -3,11 +3,11 @@ name: KiCAD Production Workflow
 on:
   push:
 #    paths:
-#      - '**.sch'
+#      - '**.kicad_sch'
 #      - '**.kicad_pcb'
     pull_request:
       paths:
-        - '**.sch'
+        - '**.kicad_sch'
         - '**.kicad_pcb'
 
 jobs:
@@ -55,6 +55,7 @@ jobs:
           --no-drc
           --assembly
           --schematic udb-s.kicad_sch
+          --nBoards $(( ${{ matrix.panel_rows }} * ${{ matrix.panel_cols }} ))
           output/kicad/panelized.kicad_pcb
           output/production/pcbway/
 
