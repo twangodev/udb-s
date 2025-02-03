@@ -1,0 +1,3 @@
+# Auto detect KiCad files
+*.kicad_pcb linguist-detectable=true
+*.kicad_sch linguist-detectable=true
