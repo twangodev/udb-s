@@ -3,11 +3,11 @@ name: KiCAD Production Workflow
 on:
   push:
 #    paths:
-#      - '**.sch'
+#      - '**.kicad_sch'
 #      - '**.kicad_pcb'
     pull_request:
       paths:
-        - '**.sch'
+        - '**.kicad_sch'
         - '**.kicad_pcb'
 
 jobs:
