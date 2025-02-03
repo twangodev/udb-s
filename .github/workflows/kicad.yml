@@ -47,17 +47,6 @@ jobs:
           output/kicad/panelized.kicad_pcb
           output/production/jlcpcb/
 
-      - name: Create Production Files (PCBWay)
-        run: >
-          docker run --rm -v ${{ github.workspace }}:/kikit yaqwsx/kikit
-          fab
-          pcbway 
-          --no-drc
-          --assembly
-          --schematic udb-s.kicad_sch
-          output/kicad/panelized.kicad_pcb
-          output/production/pcbway/
-
       - name: Upload Panel and Production Files
         uses: actions/upload-artifact@v4
         with:
